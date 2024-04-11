@@ -21,17 +21,17 @@ echo "Setting up Go environment variables in .zshrc..."
 
 # Check if GOROOT is already set in .zshrc and add it if not
 if ! grep -q "export GOROOT=" "$HOME/.zshrc"; then
-    echo "export GOROOT=${INSTALL_DIR}" >> "$HOME/dotfiles/go/environment.zsh"
+    echo "export GOROOT=${INSTALL_DIR}" >> "$HOME/.dotfiles/go/environment.zsh"
 fi
 
 # Check if GOPATH is already set in .zshrc and add it if not
 if ! grep -q "export GOPATH=" "$HOME/.zshrc"; then
-    echo "export GOPATH=\$HOME/go" >> "$HOME/dotfiles/go/environment.zsh"
+    echo "export GOPATH=\$HOME/go" >> "$HOME/.dotfiles/go/environment.zsh"
 fi
 
 # Check if Go bin is in PATH and add it if not
 if ! grep -q "${INSTALL_DIR}/bin" "$HOME/.zshrc"; then
-    echo "export PATH=\$PATH:${INSTALL_DIR}/bin:\$GOPATH/bin" >> "$HOME/dotfiles/go/path.zsh"
+    echo "export PATH=\$PATH:${INSTALL_DIR}/bin:\$GOPATH/bin" >> "$HOME/.dotfiles/go/path.zsh"
 fi
 
 echo "Version details:"

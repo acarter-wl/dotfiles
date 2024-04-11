@@ -16,3 +16,10 @@ alias lss='eza --color=always --icons -lS'      # Sort by file size, with icons
 alias lsr='eza --color=always --icons -R'       # Recursively list directories, with icons
 alias lst='eza --color=always --icons -T'       # Tree view, with icons
 alias lsx='eza --color=always --icons -@'       # Show extended attributes, with icons
+alias ls='eza --color --icons=always'
+alias sts="aws sts get-caller-identity"
+alias tfi="terraform init"
+alias tfa="terraform apply"
+alias tfp="terraform plan"
+alias tfc="terraform console"
+alias tfr="terraform refresh"
