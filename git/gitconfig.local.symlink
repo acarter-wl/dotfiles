@@ -1,0 +1,5 @@
+[user]
+        name = acarter-ims
+        email = austin.carter@intelerad.com
+[credential]
+        helper = osxkeychain

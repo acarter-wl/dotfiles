@@ -1,0 +1,2 @@
+git config --global user.name "acarter-ims"
+git config --global user.email "austin.carter@intelerad.com"
