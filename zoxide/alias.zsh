@@ -1,1 +1,1 @@
-alias zz='zoxide cd'
+alias cd='zoxide'
