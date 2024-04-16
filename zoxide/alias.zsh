@@ -1,0 +1,1 @@
+alias zz='zoxide cd'
