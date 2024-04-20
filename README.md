@@ -1,46 +1,69 @@
-**topical**
-Everything's built around topic areas. If you're adding a new area to your forked dotfiles — say, "Java" — you can simply add a java directory and put files in there. Anything with an extension of .zsh will get automatically included into your shell. Anything with an extension of .symlink will get symlinked without extension into $HOME when you run script/bootstrap.
+# Organizing Your Dotfiles with GitHub
 
+Managing your dotfiles using a structured repository can significantly streamline your environment setup. Here's an effective way to organize your dotfiles and automate their deployment.
 
-**components**
-There's a few special files in the hierarchy.
+## Directory Structure and Components
 
-bin/: Anything in bin/ will get added to your $PATH and be made available everywhere.
-topic/*.zsh: Any files ending in .zsh get loaded into your environment.
-topic/path.zsh: Any file named path.zsh is loaded first and is expected to setup $PATH or similar.
-topic/completion.zsh: Any file named completion.zsh is loaded last and is expected to setup autocomplete.
-topic/install.sh: Any file named install.sh is executed when you run script/install. To avoid being loaded automatically, its extension is .sh, not .zsh.
-topic/*.symlink: Any file ending in *.symlink gets symlinked into your $HOME. This is so you can keep all of those versioned in your dotfiles but still keep those autoloaded files in your home directory. These get symlinked in when you run script/bootstrap.
-install
-Run this:
-```
+Your dotfiles repository can be organized by topic areas, making it modular and easy to navigate. Here's a breakdown of what each component does:
+
+### Special Directories and Files
+
+- **`bin/`**: Files here will be added to your `$PATH` and made available globally.
+- **`topic/*.zsh`**: These scripts are loaded into your shell environment.
+- **`topic/path.zsh`**: Loaded first to set up `$PATH`.
+- **`topic/completion.zsh`**: Loaded last, setting up shell autocompletion.
+- **`topic/install.sh`**: Executed with `script/install`. These are not loaded automatically because they have a `.sh` extension.
+- **`topic/*.symlink`**: Files with this extension are symlinked into `$HOME` when you run `script/bootstrap`.
+
+### Installation Process
+
+To set up your dotfiles from the repository, follow these steps:
+
+```bash
 git clone https://github.com/holman/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
 script/bootstrap
 ```
-This will symlink the appropriate files in .dotfiles to your home directory. Everything is configured and tweaked within ~/.dotfiles.
 
-The main file you'll want to change right off the bat is zsh/zshrc.symlink, which sets up a few paths that'll be different on your particular machine.
+This script will symlink the appropriate files from `.dotfiles` to your home directory, ensuring that your environment is set up with the configurations you've defined in your repository.
 
-dot is a simple script that installs some dependencies, sets sane macOS defaults, and so on. Tweak this script, and occasionally run dot from time to time to keep your environment fresh and up-to-date. You can find this script in bin/.
-```
-# Git credentials
-# Not in the repository, to prevent people from accidentally committing under my name
-GIT_AUTHOR_NAME="Austin Carter"
-GIT_COMMITTER_NAME="Austin Carter
+### Initial Configuration
+
+Immediately after installation, you might want to modify `zsh/zshrc.symlink` to adjust paths specific to your setup.
+
+### Utility Script
+
+- **`dot`**: A script that helps install dependencies, set macOS defaults, and more. Regularly run `dot` to keep your environment updated.
+
+## Example of Git Configuration
+
+Here's how you can set your Git credentials locally, which also helps to avoid commits with incorrect user data:
+
+```bash
+# Set Git credentials
+GIT_AUTHOR_NAME="Your Name"
+GIT_COMMITTER_NAME="$GIT_AUTHOR_NAME"
 git config --global user.name "$GIT_AUTHOR_NAME"
-GIT_AUTHOR_EMAIL="austin.carter@intelerad.com"
+GIT_AUTHOR_EMAIL="your.email@example.com"
 GIT_COMMITTER_EMAIL="$GIT_AUTHOR_EMAIL"
 git config --global user.email "$GIT_AUTHOR_EMAIL"
-You could also use ~/.extra to override settings, functions and aliases from my dotfiles repository. It’s probably better to fork this repository instead, though.
 ```
-Sensible macOS defaults
-When setting up a new Mac, you may want to set some sensible macOS defaults:
-```
-./.macos
-```
-Install Homebrew formulae
-When setting up a new Mac, you may want to install some common Homebrew formulae (after installing Homebrew, of course):
-```
-./brew.sh
-```
+
+### Extending Your Configuration
+
+For personal overrides and additional settings, you can use `~/.extra`. This allows you to maintain a personal configuration without altering the main dotfiles repository.
+
+## Setting Up a New Mac
+
+When configuring a new Mac, you might want to set macOS defaults and install common Homebrew packages:
+
+- **Sensible macOS defaults**:
+  ```bash
+  ./.macos
+  ```
+- **Install Homebrew and formulae**:
+  ```bash
+  ./brew.sh
+  ```
+
+This structured approach not only keeps your environment organized but also makes it replicable across different machines, easing transitions and upgrades.
