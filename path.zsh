@@ -2,3 +2,4 @@ export PATH=/opt/homebrew/opt/coreutils/libexec/gnubin:/opt/homebrew/opt/binutil
 export LDFLAGS=-L/opt/homebrew/opt/binutils/lib:-L/opt/homebrew/opt/flex/lib
 export CPPFLAGS=-I/opt/homebrew/opt/binutils/include:-I/opt/homebrew/opt/flex/include
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
+export PATH=/opt/homebrew/opt/mtr/sbin:$PATH
