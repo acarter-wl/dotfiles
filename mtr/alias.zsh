@@ -1,1 +1,1 @@
-alias mtr=sudo mtr --rw
+alias mtr='sudo mtr -rw'
