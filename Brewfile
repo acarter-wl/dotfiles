@@ -126,8 +126,5 @@ cask "messenger", args: { appdir: "/Applications" }
 cask "neat"
 cask "notion-calendar", args: { appdir: "/Applications" }
 cask "plex", args: { appdir: "/Applications" }
-cask "wine-stable"
 cask "zap"
-cask "zoxide"
-cask "lazygit"
-cask "tmuxinator"
+cask "ranger"
