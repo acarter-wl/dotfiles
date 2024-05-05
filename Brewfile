@@ -19,9 +19,6 @@ brew "node"
 brew "bitwarden-cli"
 brew "clang-build-analyzer"
 brew "cloudflared"
-brew "cmake", link: false
-brew "cmake-docs", link: false
-brew "cmctl"
 brew "coreutils"
 brew "ctags"
 brew "curl"
@@ -111,20 +108,14 @@ brew "zsh"
 brew "zsh-completions"
 brew "shinokada/abi/abi"
 cask "1password-beta"
-cask "1password-cli-beta"
-cask "airtable", args: { appdir: "/Applications" }
-cask "anaconda"
-cask "arq", args: { appdir: "/Applications" }
 cask "cmake"
 cask "font-fira-code-nerd-font"
 cask "fvim"
 cask "gitkraken-cli"
 cask "gstreamer-runtime"
-cask "handbrake", args: { appdir: "/Applications" }
 cask "kui"
 cask "messenger", args: { appdir: "/Applications" }
 cask "neat"
 cask "notion-calendar", args: { appdir: "/Applications" }
 cask "plex", args: { appdir: "/Applications" }
 cask "zap"
-cask "ranger"
