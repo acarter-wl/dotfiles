@@ -106,16 +106,10 @@ brew "yt-dlp"
 brew "zplug"
 brew "zsh"
 brew "zsh-completions"
-brew "shinokada/abi/abi"
 cask "1password-beta"
-cask "cmake"
 cask "font-fira-code-nerd-font"
 cask "fvim"
 cask "gitkraken-cli"
-cask "gstreamer-runtime"
 cask "kui"
 cask "messenger", args: { appdir: "/Applications" }
 cask "neat"
-cask "notion-calendar", args: { appdir: "/Applications" }
-cask "plex", args: { appdir: "/Applications" }
-cask "zap"
