@@ -3,3 +3,5 @@
         email = austin.carter@intelerad.com
 [credential]
         helper = osxkeychain
+[alias]
+	clone-for-worktrees = "!sh $HOME/.dotfiles/clone-bare-for-worktrees.sh"        
