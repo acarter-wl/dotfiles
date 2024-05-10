@@ -4,6 +4,7 @@
 [hub]
         protocol = https
 [alias]
+        clone-for-worktrees = "!sh $DOTFILES/git-clone-bare-for-worktrees.sh"
         co = checkout
         promote = !$ZSH/bin/git-promote
         wtf     = !$ZSH/bin/git-wtf
