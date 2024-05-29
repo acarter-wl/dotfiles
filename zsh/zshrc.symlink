@@ -1,14 +1,15 @@
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
+export PATH=/opt/homebrew/bin:/opt/homebrew/sbin:$PATH
+#Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
  export DOTFILES=~/.dotfiles
- export PATH=$HOME/bin:/usr/local/bin:$PATH
    
  export ZSH=$HOME/.dotfiles
  export PROJECTS=~/code
+
  if [[ -a ~/.localrc ]]
  then
    source ~/.localrc
@@ -67,7 +68,7 @@ fi
  plug "romkatv/powerlevel10k"
  test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
-. ~/.macgnu
+#. ~/.macgnu
 zstyle ':completion:*' menu select
 autoload -U +X compinit && compinit
 autoload -U +X bashcompinit && bashcompinit 
@@ -79,6 +80,5 @@ autoload -U +X bashcompinit && bashcompinit
 autoload -U +X bashcompinit && bashcompinit
 
 source /Users/acarter/.cargo/env 
-### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
-export PATH="/Users/acarter/.rd/bin:$PATH"
-### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
+export PATH="/opt/homebrew/bin:$PATH"
+export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:/opt/homebrew/opt/findutils/libexec/gnubin:$PATH"
