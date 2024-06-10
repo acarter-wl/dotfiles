@@ -4,9 +4,12 @@
 
 # Usage: ./combine-kubeconfigs.sh /path/to/kubeconfig1 /path/to/kubeconfig2 ...
 
+# Exit on any error
+set -e
+
 # Backup the original kubeconfig
 KUBECONFIG_BACKUP=~/.kube/config.backup.$(date +%Y%m%d%H%M%S)
-cp ~/.kube/config $KUBECONFIG_BACKUP
+cp ~/.kube/config "$KUBECONFIG_BACKUP"
 echo "Original kubeconfig backed up to $KUBECONFIG_BACKUP"
 
 # Create a temporary file to hold the combined kubeconfigs
@@ -14,21 +17,21 @@ TEMP_KUBECONFIG=$(mktemp)
 
 # Initialize the temporary kubeconfig with the current kubeconfig
 export KUBECONFIG=$TEMP_KUBECONFIG
-kubectl config view --raw > $TEMP_KUBECONFIG
+kubectl config view --raw > "$TEMP_KUBECONFIG"
 
 # Combine each kubeconfig passed as an argument
 for KUBECONFIG_FILE in "$@"; do
   if [ -f "$KUBECONFIG_FILE" ]; then
     echo "Adding kubeconfig from $KUBECONFIG_FILE"
     export KUBECONFIG=$TEMP_KUBECONFIG:$KUBECONFIG_FILE
-    kubectl config view --raw > $TEMP_KUBECONFIG
+    kubectl config view --raw > "$TEMP_KUBECONFIG.tmp" && mv "$TEMP_KUBECONFIG.tmp" "$TEMP_KUBECONFIG"
   else
     echo "File $KUBECONFIG_FILE not found. Skipping."
   fi
 done
 
 # Replace the original kubeconfig with the combined kubeconfig
-mv $TEMP_KUBECONFIG ~/.kube/config
+mv "$TEMP_KUBECONFIG" ~/.kube/config
 
 # Unset KUBECONFIG environment variable
 unset KUBECONFIG
@@ -40,3 +43,4 @@ echo "Combined kubeconfig written to ~/.kube/config"
 
 # Cleanup
 trap 'rm -f "$TEMP_KUBECONFIG"' EXIT
+

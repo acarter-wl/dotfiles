@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# This script renames a kubeconfig context from "default" to "k0s"
+
+# Check if "default" context exists
+if kubectl config get-contexts | grep -q "default"; then
+  echo "Renaming context 'default' to 'k0s'"
+  kubectl config rename-context default k0s
+
+  # Verify the rename
+  if kubectl config get-contexts | grep -q "k0s"; then
+    echo "Context successfully renamed to 'k0s'"
+  else
+    echo "Failed to rename context to 'k0s'"
+  fi
+else
+  echo "Context 'default' not found"
+fi
